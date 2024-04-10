@@ -1,0 +1,34 @@
+<!-- TODO ADD BACK ICON -->
+<a class="back__link" [routerLink]="'/'">&lt; Back</a>
+<div class="container">
+  <h3 class="subtitle">PROBLEM #{{ id }}</h3>
+  <app-grid
+    [grid]="gameService.grid"
+    [solution]="gameService.solution"
+    [showSolution]="gameService.showSolution"
+    (cellClicked)="handleCellClick($event)"
+    [isNoSolution]="gameService.isNoSolution"
+    [isGameWon]="gameService.isGameWon"
+    [errorMessage]="errorMessage"
+    [isLoading]="isLoading"
+  ></app-grid>
+  <div class="button__container">
+    <app-button-primary
+      (buttonClick)="resetProblem()"
+      [text]="'Reset Problem'"
+      [isDisabled]="isLoading || errorMessage ? true : false"
+    ></app-button-primary>
+    <app-button-primary
+      (buttonClick)="onShowSolution()"
+      [text]="'Show Solution'"
+      [isDisabled]="
+        isLoading ||
+        gameService.showSolution ||
+        gameService.isGameWon ||
+        errorMessage
+          ? true
+          : false
+      "
+    ></app-button-primary>
+  </div>
+</div>

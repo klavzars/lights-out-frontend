@@ -1,0 +1,49 @@
+<!-- TODO ADD BACK ICON -->
+<a class="back__link" [routerLink]="'/'">&lt; Back</a>
+<div class="container">
+  <h3 class="subtitle">CREATE PROBLEM</h3>
+  <app-grid
+    [grid]="this.gameService.grid"
+    (cellClicked)="handleCellClick($event)"
+    [solution]="this.gameService.solution"
+    [showSolution]="this.gameService.showSolution"
+    [isNoSolution]="gameService.isNoSolution"
+    [gridSizeError]="gameService.gridSizeError"
+    [inputProblemError]="gameService.inputProblemError"
+    [errorMessage]="errorMessage"
+    [isCreateProblemMode]="true"
+  ></app-grid>
+  <div class="input">
+    <label for="numberInput" class="input__label">Grid size:</label>
+    <input
+      type="number"
+      id="numberInput"
+      [(ngModel)]="numberValue"
+      (ngModelChange)="onGridSizeChange()"
+      name="numberInput"
+      class="input__input"
+      min="3"
+      max="8"
+    />
+  </div>
+  <div class="button__container">
+    <app-button-primary
+      (buttonClick)="resetProblem()"
+      [text]="'Reset Problem'"
+      [isDisabled]="isLoading"
+    ></app-button-primary>
+    <app-button-primary
+      (buttonClick)="sendProblem()"
+      [text]="'Get Solution'"
+      [isDisabled]="
+        isLoading ||
+        gameService.showSolution ||
+        gameService.inputProblemError ||
+        gameService.gridSizeError ||
+        errorMessage
+          ? true
+          : false
+      "
+    ></app-button-primary>
+  </div>
+</div>

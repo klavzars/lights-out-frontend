@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="grid">
+    <div
+      *ngIf="
+        isNoSolution ||
+        isGameWon ||
+        gridSizeError ||
+        inputProblemError ||
+        errorMessage ||
+        (isCreateProblemMode && showSolution) ||
+        isLoading
+      "
+      class="grid__game-info"
+    >
+      <div *ngIf="isLoading" class="grid__game-popup grid__game-popup--info">
+        Loading problem...
+      </div>
+      <div *ngIf="isNoSolution" class="grid__game-popup grid__game-popup--info">
+        Problem has no solution.
+      </div>
+      <div *ngIf="isGameWon" class="grid__game-popup grid__game-popup--win">
+        Congratulations, you won!
+      </div>
+      <div
+        *ngIf="inputProblemError && !gridSizeError"
+        class="grid__game-popup grid__game-popup--alert"
+      >
+        Invalid problem. No lights are turned on.
+      </div>
+      <div
+        *ngIf="gridSizeError"
+        class="grid__game-popup grid__game-popup--alert"
+      >
+        Invalid grid size. Select a grid size between 3 and 8.
+      </div>
+      <div
+        *ngIf="errorMessage"
+        class="grid__game-popup grid__game-popup--alert"
+      >
+        {{ errorMessage }}
+      </div>
+    </div>
+    <div *ngFor="let row of grid; let rowIndex = index" class="grid__row">
+      <div
+        *ngFor="let cell of row; let colIndex = index"
+        class="grid__cell grid__cell--on"
+        [ngClass]="{ 'grid__cell--on': cell, 'grid__cell--off': !cell }"
+        [style.width]="calculateCellWidth()"
+        (click)="onCellClick(rowIndex, colIndex)"
+      >
+        <div
+          *ngIf="showSolution && solution && solution[rowIndex][colIndex]"
+          class="grid__circle"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

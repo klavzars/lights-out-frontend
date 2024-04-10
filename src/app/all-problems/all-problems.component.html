@@ -1,0 +1,36 @@
+<div class="container">
+  <h3 class="subtitle">ALL PROBLEMS</h3>
+  <div
+    *ngIf="problemGroups.length === 0 && !errorMessage && !isLoading"
+    class="no-problems"
+  >
+    <p>No problems were created yet. Click below to create some problems!</p>
+  </div>
+  <div
+    *ngIf="isLoading && problemGroups.length === 0 && !errorMessage"
+    class="loading-problems"
+  >
+    <p>Loading problems...</p>
+  </div>
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+  <div *ngFor="let problemGroup of problemGroups" class="problemGroup">
+    <h5 class="problemGroup__heading">
+      Grid size: {{ problemGroup.size }} x {{ problemGroup.size }}
+    </h5>
+    <div class="problems-container">
+      <div
+        *ngFor="let problem of problemGroup.problems"
+        class="problem__item"
+        [routerLink]="['/solve', problem.id]"
+      >
+        <span class="problem__title">{{ problem.id }}</span>
+        <span class="problem__description">Problem #{{ problem.id }}</span>
+      </div>
+    </div>
+  </div>
+  <a class="button" [routerLink]="'/create-problem'"
+    >Create your own problem ></a
+  >
+</div>

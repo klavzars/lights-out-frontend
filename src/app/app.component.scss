@@ -1,0 +1,24 @@
+@import "../styles";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-surface-200);
+}
+
+.heading {
+  color: var(--color-primary-text);
+  font-weight: var(--font-bold);
+  font-size: 4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: baseline;
+
+  &__icon {
+    height: 4rem;
+    margin-left: 0.8rem;
+  }
+}
