@@ -18,7 +18,7 @@ To run the application in dev mode, use:
 
 From a user standpoint, the application consists of 3 pages:
 
-- **All Problems** Page: Lists all problems retrieved from the REST API. Each problem can be selected and solved by clicking on it.
+- **All Problems** Page: Lists all problems retrieved from the REST API. Each problem can be selected by clicking on it.
 - **Solve Problem** Page: Displays the problem and allows the user to solve it. Also allows user to see the solution.
 - **Create Problem** Page: Allows the user to create a new problem and get its solution.
 
