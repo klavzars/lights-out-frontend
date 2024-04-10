@@ -43,6 +43,8 @@ The application handles user input errors as well as server errors by displaying
 - Duplicate problem error when trying to create a problem with the same grid configuration as an existing one.
 - Internal server errors or network errors when communicating with the REST API.
 
+**Note**: The URL for accessing the API is currently hardcoded in the FetchDataService as `http://localhost:8080/`. This should be changed to a more flexible solution in a production environment.
+
 ### Comments
 
 As with the Quarkus application, my Angular experience is also somewhat limited (although I have worked with Angular in the past). I tried to keep the structure modular and the UI clean and simple. Further work could be done on error handling and better user feedback, more elegant communication with the backend, and other enhancements.
