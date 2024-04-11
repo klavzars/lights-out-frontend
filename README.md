@@ -9,7 +9,7 @@ The backend repository for this app can be accessed [here](https://github.com/kl
 To run the application in dev mode, use:
 
 ```shell script
-./mvnw ng serve
+ng serve
 ```
 
 ## Architecture
